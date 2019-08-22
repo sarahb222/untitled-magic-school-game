@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player : Character
 {
-    private ClockScript clock;
+    private SaveManager save;
     
     private void OnTriggerStay2D(Collider2D collision)
     {
-        clock = GameObject.Find("UI").GetComponent<ClockScript>();
+        save = GameObject.Find("UI").GetComponent<SaveManager>();
         //Save the game!
         if (Input.GetKeyDown("space") && collision.gameObject.name == "Bed"){
-            clock.saveOption.SetActive(true);
+            save.saveOption.SetActive(true);
         }
     }
 
@@ -19,5 +19,12 @@ public class Player : Character
     void Update()
     {
         this.move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+
+
+        //REMOVE THIS it just tests adding to stat!!
+        if (Input.GetKeyDown("v"))
+        {
+            this.GetComponent<StatManager>().stat.earth.level++;
+        }
     }
 }

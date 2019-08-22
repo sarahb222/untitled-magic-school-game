@@ -9,11 +9,22 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     private SpriteRenderer sprite;
+    public static Character Instance { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void move(Vector2 inputVector)
@@ -37,4 +48,5 @@ public class Character : MonoBehaviour
     {
         transform.position = targetPosition;
     }
+    
 }

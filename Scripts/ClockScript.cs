@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 
 
 public class ClockScript : MonoBehaviour
@@ -22,9 +18,6 @@ public class ClockScript : MonoBehaviour
     public int minutes = 0;
     public Text time;
     public Image nighttime;
-    public GameObject saveOption;
-    public Button yesSave;
-    public Button noSave;
 
     IEnumerator Start()
     {
@@ -52,8 +45,6 @@ public class ClockScript : MonoBehaviour
         }
         
     }
-        
-    
 
     public System.TimeSpan GetTime()
     {
@@ -77,12 +68,6 @@ public class ClockScript : MonoBehaviour
             nighttime.enabled = false;
         }
         
-        //For loading the game, remove once real functionality exists
-        if (Input.GetKeyDown("x"))
-        {
-            LoadGame();
-        }
-
     }
 
     public void UpdateTime()
@@ -107,68 +92,6 @@ public class ClockScript : MonoBehaviour
             seasons = 1;
             years = years + 1;
         }
-    }
-
-    private Save CreateSaveGameObject()
-    {
-        Save save = new Save();
-        save.days = days;
-        save.seasons = seasons;
-        save.years = years;
-
-        return save;
-    }
-
-    public void SaveGame()
-    {
-        Save save = CreateSaveGameObject();
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
-        bf.Serialize(file, save);
-        file.Close();
-
-        Debug.Log("Game Saved");
-        Debug.Log(Application.persistentDataPath);
-    }
-
-    public void LoadGame()
-    {
-        if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
-        {
-            
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
-            Save save = (Save)bf.Deserialize(file);
-            file.Close();
-            
-            days = save.days;
-            seasons = save.seasons;
-            years = save.years;
-            minutes = 0;
-            hours = 6;
-
-            Debug.Log("Game Loaded");
-        }
-        else
-        {
-            Debug.Log("No game saved!");
-        }
-    }
-
-    public void YesSave()
-    {
-        days = days + 1;
-        hours = 6;
-        minutes = 0;
-        UpdateTime();
-        SaveGame();
-        saveOption.SetActive(false);
-    }
-
-    public void NoSave()
-    {
-        saveOption.SetActive(false);
     }
     
 }
