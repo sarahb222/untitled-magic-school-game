@@ -34,8 +34,7 @@ public class SaveManager : MonoBehaviour
         save.days = clock.days;
         save.seasons = clock.seasons;
         save.years = clock.years;
-        save.playerStat = player.GetComponent<StatManager>().stat;
-        Debug.Log(save.playerStat.earth.EXP);
+        save.playerSkills = player.GetComponent<SkillManager>().skills;
 
         return save;
     }
@@ -50,7 +49,6 @@ public class SaveManager : MonoBehaviour
         file.Close();
 
         Debug.Log("Game Saved");
-        Debug.Log(Application.persistentDataPath);
     }
 
     public void LoadGame()
@@ -68,7 +66,7 @@ public class SaveManager : MonoBehaviour
             clock.years = save.years;
             clock.minutes = 0;
             clock.hours = 6;
-            player.GetComponent<StatManager>().stat = save.playerStat;
+            player.GetComponent<SkillManager>().skills = save.playerSkills;
 
             Debug.Log("Game Loaded");
         }

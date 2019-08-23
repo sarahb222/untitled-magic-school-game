@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class AnimatePlayer : MonoBehaviour
 {
+    public SpriteRenderer sprite;
     private Animator playerAnim;
-    private int direction = 0;
 
     // Use this for initialization
     void Start()
     {
-
         playerAnim = GetComponent<Animator>();
 
     }
@@ -18,38 +17,24 @@ public class AnimatePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetAxisRaw("Vertical") > 0)
+        if(Input.GetAxisRaw("Horizontal") < 0)
         {
-            playerAnim.Play("PlayerBackWalk", 0);
-            direction = 1;
+            sprite.flipX = true;
         }
-
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            playerAnim.Play("PlayerSideLeftWalk", 0);
-            direction = 2;
-        }
-
-        else if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            playerAnim.Play("PlayerFrontWalk", 0);
-            direction = 3;
-        }
-
         else if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            playerAnim.Play("PlayerSideWalk", 0);
-            direction = 4;
+            sprite.flipX = false;
         }
 
-        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") ==0)
+        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
         {
-            if (direction == 1) { playerAnim.Play("PlayerBackWalk", 0, 0f); }
-            if (direction == 2) { playerAnim.Play("PlayerSideLeftWalk", 0, 0f); }
-            if (direction == 3) { playerAnim.Play("PlayerFrontWalk", 0, 0f); }
-            if (direction == 4) { playerAnim.Play("PlayerSideWalk", 0, 0f); }
+            playerAnim.Play("PlayerWalk");
         }
+        else
+        {
+            playerAnim.Play("PlayerIdle", 0);
+        }
+
 
     }
 }

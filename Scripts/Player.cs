@@ -24,7 +24,7 @@ public class Player : Character
         //REMOVE THIS it just tests adding to stat!!
         if (Input.GetKeyDown("v"))
         {
-            this.GetComponent<StatManager>().stat.earth.level++;
+            this.GetComponent<SkillManager>().skills.earth.level++;
         }
     }
 }
