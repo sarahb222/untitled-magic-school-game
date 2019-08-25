@@ -15,7 +15,15 @@ public class SaveManager : MonoBehaviour
     public GameObject saveOption;
     public Button yesSave;
     public Button noSave;
-    public GameObject player;
+    public SkillMaster skillMaster;
+
+    void Start()
+    {
+        if(GameObject.Find("StartLocation").GetComponent<StartScreen>().createNewGame == false)
+        {
+            LoadGame();
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,7 +42,8 @@ public class SaveManager : MonoBehaviour
         save.days = clock.days;
         save.seasons = clock.seasons;
         save.years = clock.years;
-        save.playerSkills = player.GetComponent<SkillManager>().skills;
+        save.playerSkills = skillMaster.playerSkills.playerSkills;
+        save.playerName = GameObject.Find("Player").GetComponent<Player>().myName;
 
         return save;
     }
@@ -44,7 +53,7 @@ public class SaveManager : MonoBehaviour
         Save save = CreateSaveGameObject();
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        FileStream file = File.Create(GameObject.Find("SaveLocation").GetComponent<StartScreen>().saveFileName);
         bf.Serialize(file, save);
         file.Close();
 
@@ -57,7 +66,7 @@ public class SaveManager : MonoBehaviour
         {
 
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            FileStream file = File.Open(GameObject.Find("SaveLocation").GetComponent<StartScreen>().saveFileName, FileMode.Open);
             Save save = (Save)bf.Deserialize(file);
             file.Close();
 
@@ -66,7 +75,8 @@ public class SaveManager : MonoBehaviour
             clock.years = save.years;
             clock.minutes = 0;
             clock.hours = 6;
-            player.GetComponent<SkillManager>().skills = save.playerSkills;
+            skillMaster.playerSkills.playerSkills = save.playerSkills;
+            GameObject.Find("Player").GetComponent<Player>().myName = save.playerName;
 
             Debug.Log("Game Loaded");
         }

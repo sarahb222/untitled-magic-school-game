@@ -31,12 +31,16 @@ public class ClockScript : MonoBehaviour
             while (true)
             {
                 yield return new WaitForSecondsRealtime(inGameMinute);
-                //In Game Minute Passed. Do Something
-                minutes = minutes + 1;
 
-                UpdateTime();
+                if (SceneManager.GetActiveScene().name == "Schoolgrounds") {
+                    //In Game Minute Passed. Do Something
+                    minutes = minutes + 1;
+
+                    UpdateTime();
+
+                    GetTime();
+                }
                 
-                GetTime();
             }
         }
         else

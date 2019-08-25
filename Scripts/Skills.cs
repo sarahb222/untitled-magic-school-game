@@ -13,8 +13,9 @@ public class Skills
     public class SkillStats
     {
         public int max;
+        public float maxEXP;
         public int level;
-        public float EXP;
+        public float levelEXP;
 
     }
 }

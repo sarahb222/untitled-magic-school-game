@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1703971709
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3383437215707287840, guid: 232da050e1614dd48a4b204a9a42ae4a,
+  m_Sprite: {fileID: -8616381154263508361, guid: 3132386e0d51572458cb565274332b1b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 2926489785025393935}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a38235e2da29a3c4894d0ab612d9bfb3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6b57a615836482b4bbf05494c3485f9a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d06dba0d5f340c459e596acb066b0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 2926489785025393933}
 --- !u!50 &2926489785025393926
 Rigidbody2D:
   serializedVersion: 4
@@ -180,15 +181,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db9f126499edd24594a1038f4bf7ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire:
-    max: 0
-    level: 0
-    EXP: 0
-  water:
-    max: 0
-    level: 0
-    EXP: 0
-  earth:
-    max: 0
-    level: 0
-    EXP: 0
+  skills:
+    fire:
+      max: 0
+      level: 0
+      EXP: 0
+    water:
+      max: 0
+      level: 0
+      EXP: 0
+    earth:
+      max: 0
+      level: 0
+      EXP: 0

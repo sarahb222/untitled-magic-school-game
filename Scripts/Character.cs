@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     private SpriteRenderer sprite;
+    public string myName = null;
     public static Character Instance { get; set; }
 
     // Start is called before the first frame update
@@ -23,6 +24,11 @@ public class Character : MonoBehaviour
         else
         {
             Instance = this;
+        }
+        
+        if(this.myName.Length == 0)
+        {
+            this.myName = GameObject.Find("StartLocation").GetComponent<StartScreen>().playerName;
         }
         DontDestroyOnLoad(this.gameObject);
     }

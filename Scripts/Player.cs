@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Character
 {
     private SaveManager save;
+    public SkillMaster skillMaster;
     
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -24,7 +25,7 @@ public class Player : Character
         //REMOVE THIS it just tests adding to stat!!
         if (Input.GetKeyDown("v"))
         {
-            this.GetComponent<SkillManager>().skills.earth.level++;
+            skillMaster.playerSkills.playerSkills.earth.level++;
         }
     }
 }
