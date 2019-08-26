@@ -10,6 +10,7 @@ public class Gateway : MonoBehaviour
     [SerializeField]
     private Vector2 spawnLocation;
 
+    //Use this to transport the player to different scenes when they collide with doors
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

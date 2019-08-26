@@ -8,9 +8,11 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
+        //Initialize the all skills
         playerSkills = Initialize(playerSkills);
     }
 
+    //Initialize skills
     private Skills Initialize(Skills skills)
     {
         skills = new Skills();
@@ -25,6 +27,7 @@ public class SkillManager : MonoBehaviour
         return skills;
     }
 
+    //Create the individual stats
     private Skills.SkillStats CreateStats(Skills.SkillStats stat)
     {
         stat.max = 1;

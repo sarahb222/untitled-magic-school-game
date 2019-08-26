@@ -20,64 +20,79 @@ public class StartScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Extra stuff is here so I can test game without having to go to start screen first
+        //Extra if statements are here so I can test game without having to go to start screen first
 
         saveFileName = Application.persistentDataPath + "/gamesave.save";
         if (newGame != null)
         {
+            //Create the new game button
             Button btnNew = newGame.GetComponent<Button>();
-            btnNew.onClick.AddListener(newGameOnClick);
+            btnNew.onClick.AddListener(NewGameOnClick);
         }
         
         if (loadGame != null)
         {
+            //Create the load game button
             Button btnLoad = loadGame.GetComponent<Button>();
-            btnLoad.onClick.AddListener(loadGameOnClick);
+            btnLoad.onClick.AddListener(LoadGameOnClick);
         }
 
         if (startNewGame != null)
         {
+            //Create the start new game button
             Button btnStartNew = startNewGame.GetComponent<Button>();
-            btnStartNew.onClick.AddListener(startNewGameOnClick);
+            btnStartNew.onClick.AddListener(StartNewGameOnClick);
         }
 
         if (returnPrev != null)
         {
+            //Create the return button
             Button btnReturn = returnPrev.GetComponent<Button>();
-            btnReturn.onClick.AddListener(returnOnClick);
+            btnReturn.onClick.AddListener(ReturnOnClick);
         }
 
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void newGameOnClick()
+    void NewGameOnClick()
     {
+        //Make the character creation screen show to player
         startNew.SetActive(true);
     }
 
-    void startNewGameOnClick()
+    void StartNewGameOnClick()
     {
         if(name != null)
         {
-            if(nameField.text != null && nameField.text.Length <= 12)
-            {
-                playerName = nameField.text;
-                createNewGame = true;
-                saveFileName = Application.persistentDataPath + "/gamesave.save";
-                SceneManager.LoadScene("Schoolgrounds");
+            //User sets character name, must be between 0 and 13 characters
+            if (nameField.text != null) {
+                if (nameField.text.Length > 0 && nameField.text.Length <= 12)
+                {
+                    playerName = nameField.text;
+                    createNewGame = true;
+
+                    //Set the save file name
+                    saveFileName = Application.persistentDataPath + "/gamesave.save";
+
+                    //Load the scene to start playing
+                    SceneManager.LoadScene("Schoolgrounds");
+                }
+
             }
             
         }
         
     }
 
-    void loadGameOnClick()
+    //Load an existing game
+    void LoadGameOnClick()
     {
         saveFileName = Application.persistentDataPath + "/gamesave.save";
         SceneManager.LoadScene("Schoolgrounds");
     }
 
-    void returnOnClick()
+    //Remove the character creation screen from view
+    void ReturnOnClick()
     {
         startNew.SetActive(false);
     }

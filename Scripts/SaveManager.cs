@@ -19,6 +19,7 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
+        //If the player isn't creating a new game, load their game
         if(GameObject.Find("StartLocation").GetComponent<StartScreen>().createNewGame == false)
         {
             LoadGame();
@@ -28,7 +29,7 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //For loading the game, remove once real functionality exists
+        //For loading the game quickly, remove once no longer needed
         if (Input.GetKeyDown("x"))
         {
             LoadGame();
@@ -36,6 +37,7 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    //Creating the save game object for saving
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
@@ -48,6 +50,7 @@ public class SaveManager : MonoBehaviour
         return save;
     }
 
+    //Save the game!
     public void SaveGame()
     {
         Save save = CreateSaveGameObject();
@@ -60,6 +63,7 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Game Saved");
     }
 
+    //Load the game!
     public void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
@@ -86,6 +90,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    //If the player chooses to save the game, then save the game
     public void YesSave()
     {
         clock.days = clock.days + 1;
@@ -96,6 +101,7 @@ public class SaveManager : MonoBehaviour
         saveOption.SetActive(false);
     }
 
+    //If the user does not want to save the game, close out of option box
     public void NoSave()
     {
         saveOption.SetActive(false);

@@ -24,6 +24,7 @@ public class GatewayManager : MonoBehaviour
         SceneManager.sceneLoaded += SceneLoaded;
     }
 
+    //Move player if the spawn position is prepared
     private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (spawnPrepared)
@@ -32,12 +33,14 @@ public class GatewayManager : MonoBehaviour
         }
     }
 
+    //Set the spawn position
     public void SetSpawnPosition(Vector2 spawnPosition)
     {
         spawnPrepared = true;
         this.spawnPosition = spawnPosition;
     }
 
+    //Teleport player to the correct position
     private void MovePosition()
     {
         FindObjectOfType<Player>().TeleportTo(spawnPosition);

@@ -10,6 +10,7 @@ public class SkillMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Store everyone's skills in this skill master
         DontDestroyOnLoad(this);
         playerSkills = skillMaster.AddComponent<SkillManager>();
     }

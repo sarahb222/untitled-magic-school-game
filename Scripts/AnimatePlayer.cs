@@ -17,6 +17,7 @@ public class AnimatePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Make sure the sprite faces the correct direction
         if(Input.GetAxisRaw("Horizontal") < 0)
         {
             sprite.flipX = true;
@@ -25,13 +26,15 @@ public class AnimatePlayer : MonoBehaviour
         {
             sprite.flipX = false;
         }
-
+        
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
         {
+            //If moving horizontally or vertically, play walking animation
             playerAnim.Play("PlayerWalk");
         }
         else
         {
+            //Otherwise play idle animation
             playerAnim.Play("PlayerIdle", 0);
         }
 

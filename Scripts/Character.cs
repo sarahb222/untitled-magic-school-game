@@ -11,9 +11,9 @@ public class Character : MonoBehaviour
     private SpriteRenderer sprite;
     public string myName = null;
     public static Character Instance { get; set; }
-
-    // Start is called before the first frame update
-    void Start()
+    
+    //Call this first for NPCs that move and Player
+    public void InitializeMovement()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -25,20 +25,16 @@ public class Character : MonoBehaviour
         {
             Instance = this;
         }
-        
-        if(this.myName.Length == 0)
-        {
-            this.myName = GameObject.Find("StartLocation").GetComponent<StartScreen>().playerName;
-        }
-        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void move(Vector2 inputVector)
+    //Moving the character based on movement speed
+    public void Move(Vector2 inputVector)
     {
         inputVector = inputVector.normalized * movementSpeed;
         body.velocity = inputVector;
     }
 
+    //Random movement for NPCs
     public IEnumerator MoveTo(Vector2 targetPosition, System.Action callback, float delay = 0f)
     {
         while(targetPosition != new Vector2(transform.position.x, transform.position.y))
@@ -50,6 +46,7 @@ public class Character : MonoBehaviour
         callback();
     }
 
+    //Teleport characters around, esp for moving between scenes
     public void TeleportTo(Vector2 targetPosition)
     {
         transform.position = targetPosition;

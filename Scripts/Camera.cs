@@ -10,12 +10,12 @@ public class Camera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //Find the player
         player = GameObject.FindWithTag("Player");
 
+        //Make the camera follow the player
         vcam = GetComponent<CinemachineVirtualCamera>();
         vcam.Follow = player.transform;
-
     }
 
 }
