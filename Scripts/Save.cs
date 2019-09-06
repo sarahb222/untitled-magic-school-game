@@ -7,8 +7,9 @@ using UnityEngine;
 public class Save
 {
     public int years = 1;
-    public int seasons = 1;
+    public String season = "Spring";
     public int days = 1;
     public Skills playerSkills;
     public String playerName;
+    public String dayoftheWeek = "Sunday";
 }

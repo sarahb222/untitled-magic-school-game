@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,12 +11,13 @@ public class ClockScript : MonoBehaviour
     private float inGameMinute = 1; // How many seconds is a real time minute
     private static GameObject instance;
 
-    private System.TimeSpan gameTime;
+    private String gameTime;
     public int years = 1;
-    public int seasons = 1;
+    public String season = "Spring";
     public int days = 1;
     public int hours = 0;
     public int minutes = 0;
+    public String dayoftheWeek = "Sunday";
     public Text time;
     public Image nighttime;
 
@@ -54,17 +56,17 @@ public class ClockScript : MonoBehaviour
     }
 
     //Get the time to display it to the screen
-    public System.TimeSpan GetTime()
+    public String GetTime()
     {
 
-        gameTime = new System.TimeSpan((int)hours, (int)minutes, 0);
+        gameTime = string.Format("{0:00}:{1:00}", hours, minutes);
         return gameTime;
     }
 
     void FixedUpdate()
     {
         //Update the display to show the current time
-        time.text = "Year: " + years + " Season: " + seasons + " Day: " + days + " " + GetTime().ToString();
+        time.text = dayoftheWeek + " " + days + " " + season + " " + years + " " + GetTime();
 
         Scene scene = SceneManager.GetActiveScene();
 
@@ -101,15 +103,24 @@ public class ClockScript : MonoBehaviour
         if (days == 22)
         {
             days = 1;
-            seasons = seasons + 1;
+            if (season == "Spring")
+            {
+                season = "Summer";
+            } else if (season == "Summer")
+            {
+                season = "Fall";
+            } else if (season == "Fall")
+            {
+                season = "Winter";
+            }
+            else
+            {
+                //Increase the year
+                season = "Spring";
+                years = years + 1;
+            }
         }
-
-        //Seasons can never be 5 or more, reset them to 1 and add 1 to the year
-        if (seasons == 5)
-        {
-            seasons = 1;
-            years = years + 1;
-        }
+        
     }
     
 }

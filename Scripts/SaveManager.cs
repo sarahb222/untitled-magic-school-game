@@ -16,11 +16,22 @@ public class SaveManager : MonoBehaviour
     public Button yesSave;
     public Button noSave;
     public SkillMaster skillMaster;
+    public static SaveManager Instance { get; set; }
 
     void Start()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         //If the player isn't creating a new game, load their game
-        if(GameObject.Find("StartLocation").GetComponent<StartScreen>().createNewGame == false)
+        if (GameObject.Find("StartLocation") != null &&
+           GameObject.Find("StartLocation").GetComponent<StartScreen>().createNewGame == false)
         {
             LoadGame();
         }
@@ -42,8 +53,9 @@ public class SaveManager : MonoBehaviour
     {
         Save save = new Save();
         save.days = clock.days;
-        save.seasons = clock.seasons;
+        save.season = clock.season;
         save.years = clock.years;
+        save.dayoftheWeek = clock.dayoftheWeek;
         save.playerSkills = skillMaster.playerSkills.playerSkills;
         save.playerName = GameObject.Find("Player").GetComponent<Player>().myName;
 
@@ -75,8 +87,9 @@ public class SaveManager : MonoBehaviour
             file.Close();
 
             clock.days = save.days;
-            clock.seasons = save.seasons;
+            clock.season = save.season;
             clock.years = save.years;
+            clock.dayoftheWeek = save.dayoftheWeek;
             clock.minutes = 0;
             clock.hours = 6;
             skillMaster.playerSkills.playerSkills = save.playerSkills;
@@ -96,7 +109,29 @@ public class SaveManager : MonoBehaviour
         clock.days = clock.days + 1;
         clock.hours = 6;
         clock.minutes = 0;
-        clock.UpdateTime();
+        //Update the day of the week
+        if (clock.dayoftheWeek == "Sunday")
+        {
+            clock.dayoftheWeek = "Monday";
+        } else if (clock.dayoftheWeek == "Monday")
+        {
+            clock.dayoftheWeek = "Tuesday";
+        } else if (clock.dayoftheWeek == "Tuesday")
+        {
+            clock.dayoftheWeek = "Wednesday";
+        } else if (clock.dayoftheWeek == "Wednesday")
+        {
+            clock.dayoftheWeek = "Thursday";
+        } else if (clock.dayoftheWeek == "Thursday")
+        {
+            clock.dayoftheWeek = "Friday";
+        } else if (clock.dayoftheWeek == "Friday")
+        {
+            clock.dayoftheWeek = "Saturday";
+        } else {
+            clock.dayoftheWeek = "Sunday";
+        }
+            clock.UpdateTime();
         SaveGame();
         saveOption.SetActive(false);
     }

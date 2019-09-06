@@ -18,11 +18,17 @@ public class SkillManager : MonoBehaviour
         skills = new Skills();
         skills.fire = new Skills.SkillStats();
         skills.water = new Skills.SkillStats();
+        skills.air = new Skills.SkillStats();
         skills.earth = new Skills.SkillStats();
+        skills.animal = new Skills.SkillStats();
+        skills.potions = new Skills.SkillStats();
 
         CreateStats(skills.fire);
         CreateStats(skills.water);
+        CreateStats(skills.air);
         CreateStats(skills.earth);
+        CreateStats(skills.animal);
+        CreateStats(skills.potions);
 
         return skills;
     }

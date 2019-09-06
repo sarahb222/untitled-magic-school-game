@@ -16,10 +16,20 @@ public class StartScreen : MonoBehaviour
     public bool createNewGame = false;
     public String saveFileName;
     public String playerName;
+    public static StartScreen Instance { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         //Extra if statements are here so I can test game without having to go to start screen first
 
         saveFileName = Application.persistentDataPath + "/gamesave.save";

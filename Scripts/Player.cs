@@ -13,7 +13,7 @@ public class Player : Character
         this.InitializeMovement();
 
         //Sets player name
-        if (this.myName.Length == 0)
+        if (this.myName.Length == 0 && GameObject.Find("StartLocation") != null)
         {
             this.myName = GameObject.Find("StartLocation").GetComponent<StartScreen>().playerName;
         }

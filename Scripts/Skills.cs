@@ -7,7 +7,10 @@ public class Skills
 {
     public SkillStats fire;
     public SkillStats water;
+    public SkillStats air;
     public SkillStats earth;
+    public SkillStats animal;
+    public SkillStats potions;
 
     [System.Serializable]
     public class SkillStats
