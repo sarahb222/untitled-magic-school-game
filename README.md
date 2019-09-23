@@ -19,10 +19,15 @@ Current Features:
 - Personalize character name
 - Save game by going to sleep in your dorm room
 
-![image](https://user-images.githubusercontent.com/5571989/63727397-2ff2c180-c82e-11e9-9deb-fff139bb6845.png)
-
-![image](https://user-images.githubusercontent.com/5571989/63727438-4d279000-c82e-11e9-9171-e2011be6be0c.png)
-
-![image](https://user-images.githubusercontent.com/5571989/63727464-5e709c80-c82e-11e9-9b78-1ed5a8e1c3a7.png)
-
-![image](https://user-images.githubusercontent.com/5571989/63727475-6fb9a900-c82e-11e9-84d3-fd1113eb5948.png)
+Title Screen
+![image](https://user-images.githubusercontent.com/5571989/65400888-d0d38e80-dd92-11e9-821f-f99e70d3f28c.png)
+New Game Screen
+![image](https://user-images.githubusercontent.com/5571989/65400908-eb0d6c80-dd92-11e9-9677-b7220ce1ffe7.png)
+Outside Dorms
+![image](https://user-images.githubusercontent.com/5571989/65400938-06787780-dd93-11e9-8dfe-5073e0bfa6c4.png)
+Save inside Dorms
+![image](https://user-images.githubusercontent.com/5571989/65400952-18f2b100-dd93-11e9-8d3f-ae396b76219e.png)
+Class Time Notification
+![image](https://user-images.githubusercontent.com/5571989/65400970-36277f80-dd93-11e9-87e1-dff5220d1a6f.png)
+Pause Menu/Fire Skills Screen
+![image](https://user-images.githubusercontent.com/5571989/65400996-5b1bf280-dd93-11e9-94f2-e3e0b30f490b.png)
