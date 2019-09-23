@@ -19,6 +19,16 @@ public class Skills
         public float maxEXP;
         public int level;
         public float levelEXP;
+        public int skillPoints;
+        public int skill1;
+        public int skill2a;
+        public int skill2b;
+        public int skill3a;
+        public int skill3b;
+        public int skill3c;
+        public int skill4a;
+        public int skill4b;
+        public int skill5;
 
     }
 }

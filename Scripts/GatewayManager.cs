@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GatewayManager : MonoBehaviour
 {
-    private Vector2 spawnPosition;
+    public Vector2 spawnPosition;
     private bool spawnPrepared;
     public static GatewayManager Instance { get; set; }
 

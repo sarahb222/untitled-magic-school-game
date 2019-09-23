@@ -10,7 +10,7 @@ public class ClockScript : MonoBehaviour
 {
     private float inGameMinute = 1; // How many seconds is a real time minute
     private static GameObject instance;
-
+    public GameObject player;
     private String gameTime;
     public int years = 1;
     public String season = "Spring";
@@ -19,7 +19,7 @@ public class ClockScript : MonoBehaviour
     public int minutes = 0;
     public String dayoftheWeek = "Sunday";
     public Text time;
-    public Image nighttime;
+    public GameObject nighttime;
 
     IEnumerator Start()
     {
@@ -37,7 +37,7 @@ public class ClockScript : MonoBehaviour
                 yield return new WaitForSecondsRealtime(inGameMinute);
 
                 //Only increase the time if the player is outside
-                if (SceneManager.GetActiveScene().name == "Schoolgrounds") {
+                if (SceneManager.GetActiveScene().name == "Schoolgrounds" && player.GetComponent<Player>().paused == false) {
                     //In Game Minute Passed. Do Something
                     minutes = minutes + 1;
 
@@ -73,11 +73,11 @@ public class ClockScript : MonoBehaviour
         //If it is between 18:00 and 6:00 then it is dark outside! Only changes the outside to be dark, not the inside.
         if ((hours >= 18 || hours < 6)  && (scene.name == "Schoolgrounds"))
         {
-            nighttime.enabled = true; ;
+            nighttime.SetActive(true);
         }
         else
         {
-            nighttime.enabled = false;
+            nighttime.SetActive(false);
         }
         
     }

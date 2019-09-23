@@ -14,6 +14,7 @@ public class StartScreen : MonoBehaviour
     public GameObject startNew = null;
     public InputField nameField = null;
     public bool createNewGame = false;
+    public bool loadMyGame = false;
     public String saveFileName;
     public String playerName;
     public static StartScreen Instance { get; set; }
@@ -98,6 +99,7 @@ public class StartScreen : MonoBehaviour
     void LoadGameOnClick()
     {
         saveFileName = Application.persistentDataPath + "/gamesave.save";
+        loadMyGame = true;
         SceneManager.LoadScene("Schoolgrounds");
     }
 

@@ -38,8 +38,18 @@ public class SkillManager : MonoBehaviour
     {
         stat.max = 1;
         stat.maxEXP = 0;
-        stat.level = 0;
+        stat.level = 1;
         stat.levelEXP = 0;
+        stat.skillPoints = 0;
+        stat.skill1 = 1;
+        stat.skill2a = 0;
+        stat.skill2b = 0;
+        stat.skill3a = 0;
+        stat.skill3b = 0;
+        stat.skill3c = 0;
+        stat.skill4a = 0;
+        stat.skill4b = 0;
+        stat.skill5 = 0;
 
         return stat;
     }

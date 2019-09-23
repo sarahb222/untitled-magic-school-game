@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,6 +11,8 @@ public class Character : MonoBehaviour
     private float movementSpeed;
     private SpriteRenderer sprite;
     public string myName = null;
+    private Vector2 targetPos;
+    private bool makeUpdate = false;
     public static Character Instance { get; set; }
     
     //Call this first for NPCs that move and Player

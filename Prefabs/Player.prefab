@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 2926489785025393931}
   - component: {fileID: 2926489785025393926}
   - component: {fileID: 2926489785025393929}
-  - component: {fileID: 199872457}
-  - component: {fileID: 2078750385}
+  - component: {fileID: 1629908266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,8 +152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
---- !u!70 &199872457
-CapsuleCollider2D:
+  myName: 
+  skillMaster: {fileID: 0}
+  paused: 0
+--- !u!58 &1629908266
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,31 +168,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040680766, y: 0}
-  m_Size: {x: 0.6207267, y: 2}
-  m_Direction: 0
---- !u!114 &2078750385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2926489785025393935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db9f126499edd24594a1038f4bf7ba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skills:
-    fire:
-      max: 0
-      level: 0
-      EXP: 0
-    water:
-      max: 0
-      level: 0
-      EXP: 0
-    earth:
-      max: 0
-      level: 0
-      EXP: 0
+  m_Offset: {x: 0, y: -0.34769952}
+  serializedVersion: 2
+  m_Radius: 0.31896722

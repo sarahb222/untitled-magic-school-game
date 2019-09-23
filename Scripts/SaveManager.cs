@@ -29,17 +29,19 @@ public class SaveManager : MonoBehaviour
             Instance = this;
         }
 
-        //If the player isn't creating a new game, load their game
-        if (GameObject.Find("StartLocation") != null &&
-           GameObject.Find("StartLocation").GetComponent<StartScreen>().createNewGame == false)
-        {
-            LoadGame();
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //If the player needs to load the game, then load it!
+        if (GameObject.Find("StartLocation") != null &&
+           GameObject.Find("StartLocation").GetComponent<StartScreen>().loadMyGame == true)
+        {
+            GameObject.Find("StartLocation").GetComponent<StartScreen>().loadMyGame = false;
+            LoadGame();
+        }
         //For loading the game quickly, remove once no longer needed
         if (Input.GetKeyDown("x"))
         {
@@ -68,7 +70,7 @@ public class SaveManager : MonoBehaviour
         Save save = CreateSaveGameObject();
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(GameObject.Find("SaveLocation").GetComponent<StartScreen>().saveFileName);
+        FileStream file = File.Create(GameObject.Find("StartLocation").GetComponent<StartScreen>().saveFileName);
         bf.Serialize(file, save);
         file.Close();
 
@@ -78,11 +80,11 @@ public class SaveManager : MonoBehaviour
     //Load the game!
     public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
+        if (File.Exists(GameObject.Find("StartLocation").GetComponent<StartScreen>().saveFileName))
         {
 
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(GameObject.Find("SaveLocation").GetComponent<StartScreen>().saveFileName, FileMode.Open);
+            FileStream file = File.Open(GameObject.Find("StartLocation").GetComponent<StartScreen>().saveFileName, FileMode.Open);
             Save save = (Save)bf.Deserialize(file);
             file.Close();
 
